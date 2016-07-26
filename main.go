@@ -22,6 +22,62 @@ func (p pairs) Swap(i,j int){
 	p[i], p[j] = p[j], p[i]
 }
 
+func GetAll(inp string)[]string{
+	languages := []string{
+		"English",
+		"Arabic",
+		"French",
+		"German",
+		"Japanese",
+		"Korean",
+		"Mandarin",
+		"Portugese",
+		"Russian",
+		"Spanish",
+		"Bengali",
+		"Bulgarian",
+		"Catalan",
+		"Croation",
+		"Czech",
+		"Danish",
+		"Dutch",
+		"Estonian",
+		"Finnish",
+		"Greek",
+		"Hebrew",
+		"Hindi",
+		"Hmong",
+		"Hungarian",
+		"Indonesian",
+		"Italian",
+		"Latvian",
+		"Lithuanian",
+		"Javanese",
+		"Norwegian",
+		"Persian",
+		"Polish",
+		"Punjabi",
+		"Romanian",
+		"Serbian",
+		"Slovak",
+		"Slovenian",
+		"Swedish",
+		"Thai",
+		"Turkish",
+		"Ukrainian",
+		"Vietnamese",
+	}
+	topLanguages := Get(inp)
+	for _, v := range topLanguages {
+		for i, j := range languages {
+			if j == v {
+				languages = append(languages[:i], languages[i+1:]...)
+			}
+		}
+	}
+	return append(topLanguages,languages...)
+}
+
 func Get(inp string) []string {
 	i := strings.Split(inp,",")
 	b := make([]pair,0)
